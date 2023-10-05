@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
-"""type-annotated function floor which takes a float n as argument"""
+"""
+This module contains the function `floor`
+"""
+
 import math
 
 
 def floor(n: float) -> int:
-    """Returns the floor of the float."""
+    """Return the floor of a given float"""
+    return math.floor(n)
