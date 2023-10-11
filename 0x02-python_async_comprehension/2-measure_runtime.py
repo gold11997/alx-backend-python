@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
-"""10 random numbers using an async comprehensing over"""
-from typing import List
-async_generator = __import__('0-async_generator').async_generator
+"""measure_runtime should measure the total runtime and return it."""
+import time
+import asyncio
+async_comprehension = __import__('1-async_comprehension').async_comprehension
 
 
-async def async_comprehension() -> List[float]:
+async def measure_runtime() -> float:
     """
-    async_comprehension - function that takes no arguments
-    Return: 10 random numbers
+    measure_runtime should measure the total runtime and return it.
+    four times in parallel using asyncio.gather.
     """
-    rslt = [i async for i in async_generator()]
-    return rslt
+    t_start = time.perf_counter()
+    task = [async_comprehension() for i in range(4)]
+    await asyncio.gather(*task)
+    t_end = time.perf_counter()
+    return (t_end - t_start)
